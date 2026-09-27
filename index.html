@@ -290,6 +290,10 @@
   .ingredients-line b{color:var(--ink);}
   .modal-sec{margin-top:22px;}
   .modal-sec h4{font-size:.95rem;margin-bottom:10px;}
+  .nutri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .nutri-cell{background:var(--beige);border-radius:12px;padding:10px 8px;text-align:center;}
+  .nutri-cell b{display:block;font-size:.95rem;color:var(--ink);}
+  .nutri-cell span{font-size:.66rem;color:var(--ink-soft);font-weight:700;}
   .opt-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);}
   .opt-row:last-child{border-bottom:none;}
   .opt-info{display:flex;align-items:center;gap:10px;}
@@ -390,6 +394,93 @@
 
   .footer-note{text-align:center;color:var(--ink-soft);font-size:.78rem;padding:30px 20px 20px;line-height:1.6;}
   .req-star{color:var(--danger);}
+
+  /* ---------- Subtle interaction animations ---------- */
+  .food-card{transition:transform .22s ease, box-shadow .22s ease;}
+  .food-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(46,75,42,.14);}
+  .food-card:active{transform:translateY(-1px) scale(.99);}
+  .food-media .media-art{transition:transform .3s ease;}
+  .food-card:hover .media-art{transform:scale(1.05);}
+  .cat-card{transition:transform .18s ease, box-shadow .18s ease;}
+  .cat-card:hover{transform:translateY(-3px);}
+  .tier-card,.card{transition:box-shadow .2s ease;}
+  :root.reduce-motion .food-card,:root.reduce-motion .food-media .media-art,:root.reduce-motion .cat-card{transition:none!important;}
+  :root.reduce-motion .food-card:hover{transform:none;}
+  :root.reduce-motion .view{animation:none!important;}
+
+  /* ---------- Richer "photo style" product media (CSS/SVG, no external images) ---------- */
+  .food-media{overflow:hidden;position:relative;}
+  .media-art{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+  .media-art .plate{width:74%;height:74%;border-radius:50%;background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.55) 60%, rgba(255,255,255,0) 72%);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 4px 14px rgba(0,0,0,.06);}
+  .media-art .plate .em{font-size:2.6rem;filter:drop-shadow(0 6px 10px rgba(0,0,0,.12));}
+  .media-art .surface{position:absolute;bottom:0;left:0;right:0;height:34%;background:linear-gradient(to top, rgba(0,0,0,.05), transparent);}
+
+  /* ---------- Notification bell + drawer ---------- */
+  .notif-drawer{
+    display:none;position:absolute;top:64px;right:20px;width:320px;max-width:88vw;max-height:70vh;overflow-y:auto;
+    background:var(--white);border-radius:18px;box-shadow:0 20px 44px rgba(0,0,0,.18);z-index:60;padding:10px;
+  }
+  .notif-drawer.open{display:block;}
+  .notif-item{padding:12px 12px;border-radius:12px;font-size:.85rem;line-height:1.4;color:var(--ink);}
+  .notif-item:not(:last-child){border-bottom:1px solid var(--line);}
+  .notif-item .t{font-size:.68rem;color:var(--ink-soft);margin-top:3px;}
+  .notif-empty{padding:24px 10px;text-align:center;color:var(--ink-soft);font-size:.85rem;}
+  .notif-head{display:flex;justify-content:space-between;align-items:center;padding:6px 8px 10px;font-weight:800;font-size:.85rem;}
+
+  /* ---------- Star rating ---------- */
+  .stars{display:inline-flex;gap:2px;}
+  .stars .st{font-size:1.3rem;color:var(--line);cursor:default;}
+  .stars.interactive .st{cursor:pointer;}
+  .stars .st.on{color:#F2B84B;}
+  .rating-line{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--ink-soft);}
+
+  /* ---------- Coupon ---------- */
+  .coupon-row{display:flex;gap:8px;margin-top:14px;}
+  .coupon-row input{flex:1;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--beige);font-size:.9rem;}
+  .coupon-applied{display:flex;justify-content:space-between;align-items:center;background:#F3FBEF;border:1.5px solid var(--mint);border-radius:14px;padding:12px 14px;margin-top:14px;font-size:.85rem;font-weight:700;color:var(--mint-ink);}
+
+  /* ---------- FIT Puntos ---------- */
+  .points-card{background:linear-gradient(135deg,var(--mint),var(--pink));border-radius:22px;padding:22px;color:var(--mint-ink);}
+  .points-card .big{font-size:2rem;font-weight:800;}
+  .progress-track{background:rgba(255,255,255,.55);border-radius:999px;height:10px;margin-top:12px;overflow:hidden;}
+  .progress-fill{background:var(--mint-ink);height:100%;border-radius:999px;transition:width .3s ease;}
+  .reward-row{display:flex;align-items:center;gap:10px;background:var(--white);border-radius:14px;padding:12px 14px;margin-top:10px;box-shadow:var(--shadow);}
+  .reward-row.locked{opacity:.55;}
+
+  /* ---------- Settings / accessibility ---------- */
+  .settings-row{display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);margin-bottom:10px;}
+  .settings-row .lab b{display:block;font-size:.9rem;}
+  .settings-row .lab small{color:var(--ink-soft);font-size:.76rem;}
+
+  /* ---------- Admin panel ---------- */
+  .admin-stat{background:var(--white);border-radius:16px;padding:16px;box-shadow:var(--shadow);text-align:center;}
+  .admin-stat b{display:block;font-size:1.4rem;color:var(--mint-ink);}
+  .admin-stat span{font-size:.72rem;color:var(--ink-soft);font-weight:700;}
+  .admin-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:18px;}
+  .admin-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:.8rem;}
+  .admin-bar-track{flex:1;background:var(--beige);border-radius:999px;height:10px;overflow:hidden;}
+  .admin-bar-fill{background:var(--mint-deep);height:100%;border-radius:999px;}
+  .admin-order-card{background:var(--white);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);margin-bottom:10px;}
+  .admin-order-card .top{display:flex;justify-content:space-between;font-size:.85rem;font-weight:800;}
+  .admin-order-card .meta{font-size:.76rem;color:var(--ink-soft);margin-top:4px;line-height:1.5;}
+  .admin-status-btns{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+
+  /* ---------- Dark mode (keeps FIT CAMPUS identity) ---------- */
+  :root[data-theme="dark"]{
+    --beige:#1E241B; --white:#26301F; --ink:#EDF3E6; --ink-soft:#AEB9A5; --line:#3A4634;
+    --mint-ink:#BFECAC; --danger-bg:#3A2420;
+  }
+  :root[data-theme="dark"] body{background:var(--beige);}
+  :root[data-theme="dark"] .topbar{background:rgba(30,36,27,.92);}
+  :root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea{background:#1E241B;color:var(--ink);}
+  :root[data-theme="dark"] .food-media .plate{background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.18), rgba(255,255,255,.05) 60%, transparent 72%);}
+
+  /* ---------- Accessibility ---------- */
+  :root.large-text{font-size:112%;}
+  :root.high-contrast{--ink:#000; --ink-soft:#333;}
+  :root.high-contrast[data-theme="dark"]{--ink:#fff; --ink-soft:#ddd;}
+  :root.high-contrast .btn-primary{background:#1f5c14;}
+
 </style>
 </head>
 <body>
@@ -399,10 +490,12 @@
     <div class="brand" onclick="go('home')"><span class="leaf">🥗</span> FIT CAMPUS</div>
     <nav class="topnav" id="topnav"></nav>
     <div class="topbar-right">
+      <button class="icon-btn" onclick="toggleNotifDrawer()" title="Notificaciones">🔔<span class="dot" id="notifDotTop"></span></button>
       <button class="icon-btn" onclick="go('favorites')" title="Favoritos">❤️</button>
       <button class="icon-btn" onclick="go('cart')" title="Carrito">🛒<span class="dot" id="cartDotTop"></span></button>
       <button class="icon-btn" onclick="go(state.user?'profile':'auth')" title="Perfil">👤</button>
     </div>
+    <div class="notif-drawer" id="notifDrawer"></div>
   </div>
 
   <!-- HOME -->
@@ -437,6 +530,11 @@
     <section class="pad">
       <div class="sec-head"><h2>Populares esta semana</h2><span class="muted">Elegidos por estudiantes</span></div>
       <div class="grid" id="homePopular"></div>
+    </section>
+
+    <section class="pad" id="homeForYouSection" style="display:none;">
+      <div class="sec-head"><h2>Basado en tus favoritos</h2><span class="muted">Elegido para ti</span></div>
+      <div class="grid" id="homeForYou"></div>
     </section>
   </section>
 
@@ -520,6 +618,19 @@
         <label class="switch"><input type="checkbox" id="compatSwitch" onchange="renderMenu()"><span class="track"></span></label>
       </div>
       <div id="menuContent"></div>
+    </section>
+  </section>
+
+  <!-- PLANES FIT -->
+  <section class="view" id="view-plans">
+    <section class="pad">
+      <div class="sec-head"><h2>Planes Fit 📅</h2><span class="muted">Planea tus comidas y ahorra</span></div>
+      <div class="tab-strip" id="planTabStrip">
+        <button class="active" data-tab="semanal" onclick="switchPlanTab('semanal')">Plan Semanal</button>
+        <button data-tab="mensual" onclick="switchPlanTab('mensual')">Plan Mensual</button>
+        <button data-tab="combos" onclick="switchPlanTab('combos')">Combos Fit</button>
+      </div>
+      <div id="plansContent"></div>
     </section>
   </section>
 
@@ -640,12 +751,28 @@
         <button class="ptab" data-t="restr" onclick="switchPTab('restr')">Restricciones</button>
         <button class="ptab" data-t="fav" onclick="switchPTab('fav')">Favoritos</button>
         <button class="ptab" data-t="hist" onclick="switchPTab('hist')">Historial</button>
+        <button class="ptab" data-t="puntos" onclick="switchPTab('puntos')">FIT Puntos</button>
+        <button class="ptab" data-t="ajustes" onclick="switchPTab('ajustes')">Ajustes</button>
       </div>
       <div id="ptab-datos" class="ptab-content"></div>
       <div id="ptab-restr" class="ptab-content" style="display:none;"></div>
       <div id="ptab-fav" class="ptab-content" style="display:none;"></div>
       <div id="ptab-hist" class="ptab-content" style="display:none;"></div>
+      <div id="ptab-puntos" class="ptab-content" style="display:none;"></div>
+      <div id="ptab-ajustes" class="ptab-content" style="display:none;"></div>
       <button class="btn btn-ghost" style="margin-top:20px;color:var(--danger);" onclick="doLogout()">Cerrar sesión</button>
+      <p class="hint" style="margin-top:14px;"><a onclick="go('admin')" style="color:var(--mint-deep);font-weight:700;cursor:pointer;">Panel administrador (demo)</a></p>
+    </section>
+  </section>
+
+  <!-- ADMIN (simulado) -->
+  <section class="view" id="view-admin">
+    <section class="pad">
+      <div class="sec-head"><h2>Panel administrador 🛠️</h2><span class="muted">Vista simulada — solo para la demo</span></div>
+      <button class="btn btn-ghost" style="padding-left:0;" onclick="go(state.prevView||'profile')">← Volver</button>
+      <div id="adminStats"></div>
+      <div class="tab-strip" id="adminFilterStrip"></div>
+      <div id="adminOrders"></div>
     </section>
   </section>
 
@@ -655,6 +782,11 @@
 <!-- PRODUCT MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modalBody"></div>
+</div>
+
+<!-- UNIT-BY-UNIT CUSTOMIZATION MODAL -->
+<div class="modal-overlay" id="unitModalOverlay">
+  <div class="modal" id="unitModalBody"></div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -678,29 +810,29 @@ const ALLERGEN_LABELS = {
 };
 
 const PRODUCTS = [
-  {id:'p1',cat:'desayunos',em:'🍓',name:'Bowl de frutas',desc:'Mix de frutas de temporada con granola y un toque de miel.',ing:'Fruta variada, granola, miel',allerg:['frutos_secos'],veg:true,vegan:true,price:12000},
-  {id:'p2',cat:'desayunos',em:'🥣',name:'Yogur con granola',desc:'Yogur natural, granola crocante y miel.',ing:'Yogur, granola, miel',allerg:['lactosa','frutos_secos'],veg:true,vegan:false,price:10000},
-  {id:'p3',cat:'desayunos',em:'🥪',name:'Sándwich saludable',desc:'Pan integral con huevo, aguacate y tomate.',ing:'Pan integral, huevo, aguacate, tomate',allerg:['gluten','huevo'],veg:true,vegan:false,price:11000},
+  {id:'p1',cat:'desayunos',em:'🍓',name:'Bowl de frutas',desc:'Mix de frutas de temporada con granola y un toque de miel.',ing:'Fruta variada, granola, miel',allerg:['frutos_secos'],veg:true,vegan:true,price:12000,nutri:{kcal:210,prot:4,carb:42,fat:4,fiber:5,portion:'250 g'}},
+  {id:'p2',cat:'desayunos',em:'🥣',name:'Yogur con granola',desc:'Yogur natural, granola crocante y miel.',ing:'Yogur, granola, miel',allerg:['lactosa','frutos_secos'],veg:true,vegan:false,price:10000,nutri:{kcal:260,prot:10,carb:34,fat:8,fiber:3,portion:'220 g'}},
+  {id:'p3',cat:'desayunos',em:'🥪',name:'Sándwich saludable',desc:'Pan integral con huevo, aguacate y tomate.',ing:'Pan integral, huevo, aguacate, tomate',allerg:['gluten','huevo'],veg:true,vegan:false,price:11000,nutri:{kcal:320,prot:14,carb:30,fat:16,fiber:6,portion:'1 sándwich'}},
 
-  {id:'p4',cat:'almuerzos',em:'🍗',name:'Bowl de pollo',desc:'Pollo, arroz, aguacate, tomate y vegetales frescos.',ing:'Pollo, arroz, aguacate, tomate, vegetales',allerg:[],veg:false,vegan:false,price:18000},
-  {id:'p5',cat:'almuerzos',em:'🥙',name:'Bowl vegetariano',desc:'Quinoa, garbanzos, aguacate y vegetales de la huerta.',ing:'Quinoa, garbanzos, aguacate, vegetales',allerg:[],veg:true,vegan:true,price:16000},
-  {id:'p6',cat:'almuerzos',em:'🥗',name:'Ensalada con proteína',desc:'Lechuga, pollo, huevo y queso fresco.',ing:'Lechuga, pollo, huevo, queso',allerg:['huevo','lactosa'],veg:false,vegan:false,price:17000},
-  {id:'p7',cat:'almuerzos',em:'🌯',name:'Wrap saludable',desc:'Tortilla integral con pollo, vegetales y salsa de yogur.',ing:'Tortilla integral, pollo, vegetales, salsa de yogur',allerg:['gluten','lactosa'],veg:false,vegan:false,price:15000},
+  {id:'p4',cat:'almuerzos',em:'🍗',name:'Bowl de pollo',desc:'Pollo, arroz, aguacate, tomate y vegetales frescos.',ing:'Pollo, arroz, aguacate, tomate, vegetales',allerg:[],veg:false,vegan:false,price:18000,nutri:{kcal:520,prot:34,carb:52,fat:16,fiber:6,portion:'400 g'}},
+  {id:'p5',cat:'almuerzos',em:'🥙',name:'Bowl vegetariano',desc:'Quinoa, garbanzos, aguacate y vegetales de la huerta.',ing:'Quinoa, garbanzos, aguacate, vegetales',allerg:[],veg:true,vegan:true,price:16000,nutri:{kcal:460,prot:16,carb:58,fat:15,fiber:11,portion:'380 g'}},
+  {id:'p6',cat:'almuerzos',em:'🥗',name:'Ensalada con proteína',desc:'Lechuga, pollo, huevo y queso fresco.',ing:'Lechuga, pollo, huevo, queso',allerg:['huevo','lactosa'],veg:false,vegan:false,price:17000,nutri:{kcal:390,prot:30,carb:14,fat:22,fiber:4,portion:'350 g'}},
+  {id:'p7',cat:'almuerzos',em:'🌯',name:'Wrap saludable',desc:'Tortilla integral con pollo, vegetales y salsa de yogur.',ing:'Tortilla integral, pollo, vegetales, salsa de yogur',allerg:['gluten','lactosa'],veg:false,vegan:false,price:15000,nutri:{kcal:430,prot:26,carb:40,fat:16,fiber:5,portion:'1 wrap (300 g)'}},
 
-  {id:'p8',cat:'snacks',em:'🍇',name:'Frutas',desc:'Porción de fruta fresca lista para llevar.',ing:'Mix de frutas de estación',allerg:[],veg:true,vegan:true,price:6000},
-  {id:'p9',cat:'snacks',em:'🥛',name:'Yogur',desc:'Yogur natural sin azúcar añadida.',ing:'Yogur natural',allerg:['lactosa'],veg:true,vegan:false,price:5000},
-  {id:'p10',cat:'snacks',em:'🍫',name:'Barras de cereal',desc:'Avena, miel y frutos secos horneados.',ing:'Avena, miel, frutos secos',allerg:['gluten','frutos_secos'],veg:true,vegan:false,price:4000},
-  {id:'p11',cat:'snacks',em:'🥜',name:'Frutos secos',desc:'Mix de almendras, nueces y maní tostado.',ing:'Almendras, nueces, maní',allerg:['frutos_secos'],veg:true,vegan:true,price:7000},
+  {id:'p8',cat:'snacks',em:'🍇',name:'Frutas',desc:'Porción de fruta fresca lista para llevar.',ing:'Mix de frutas de estación',allerg:[],veg:true,vegan:true,price:6000,nutri:{kcal:90,prot:1,carb:22,fat:0,fiber:3,portion:'200 g'}},
+  {id:'p9',cat:'snacks',em:'🥛',name:'Yogur',desc:'Yogur natural sin azúcar añadida.',ing:'Yogur natural',allerg:['lactosa'],veg:true,vegan:false,price:5000,nutri:{kcal:120,prot:8,carb:11,fat:5,fiber:0,portion:'150 g'}},
+  {id:'p10',cat:'snacks',em:'🍫',name:'Barras de cereal',desc:'Avena, miel y frutos secos horneados.',ing:'Avena, miel, frutos secos',allerg:['gluten','frutos_secos'],veg:true,vegan:false,price:4000,nutri:{kcal:150,prot:4,carb:20,fat:6,fiber:2,portion:'1 barra (35 g)'}},
+  {id:'p11',cat:'snacks',em:'🥜',name:'Frutos secos',desc:'Mix de almendras, nueces y maní tostado.',ing:'Almendras, nueces, maní',allerg:['frutos_secos'],veg:true,vegan:true,price:7000,nutri:{kcal:210,prot:7,carb:8,fat:18,fiber:3,portion:'40 g'}},
 
-  {id:'p12',cat:'postres',em:'🍨',name:'Yogur con frutas',desc:'Yogur cremoso con frutas y granola.',ing:'Yogur, frutas, granola',allerg:['lactosa','frutos_secos'],veg:true,vegan:false,price:8000},
-  {id:'p13',cat:'postres',em:'🍰',name:'Brownie saludable',desc:'Hecho con harina de avena, cacao y huevo.',ing:'Harina de avena, cacao, huevo',allerg:['gluten','huevo'],veg:true,vegan:false,price:7000},
-  {id:'p14',cat:'postres',em:'🧁',name:'Cheesecake saludable',desc:'Queso crema light sobre base de avena con frutos rojos.',ing:'Queso crema light, avena, frutos rojos',allerg:['lactosa','gluten'],veg:true,vegan:false,price:9000},
+  {id:'p12',cat:'postres',em:'🍨',name:'Yogur con frutas',desc:'Yogur cremoso con frutas y granola.',ing:'Yogur, frutas, granola',allerg:['lactosa','frutos_secos'],veg:true,vegan:false,price:8000,nutri:{kcal:190,prot:7,carb:28,fat:5,fiber:2,portion:'200 g'}},
+  {id:'p13',cat:'postres',em:'🍰',name:'Brownie saludable',desc:'Hecho con harina de avena, cacao y huevo.',ing:'Harina de avena, cacao, huevo',allerg:['gluten','huevo'],veg:true,vegan:false,price:7000,nutri:{kcal:230,prot:5,carb:26,fat:11,fiber:3,portion:'1 unidad (60 g)'}},
+  {id:'p14',cat:'postres',em:'🧁',name:'Cheesecake saludable',desc:'Queso crema light sobre base de avena con frutos rojos.',ing:'Queso crema light, avena, frutos rojos',allerg:['lactosa','gluten'],veg:true,vegan:false,price:9000,nutri:{kcal:240,prot:6,carb:24,fat:12,fiber:2,portion:'1 porción (90 g)'}},
 
-  {id:'p15',cat:'bebidas',em:'💧',name:'Agua',desc:'Agua natural en botella.',ing:'Agua',allerg:[],veg:true,vegan:true,price:3000},
-  {id:'p16',cat:'bebidas',em:'🧃',name:'Jugo natural',desc:'Jugo de fruta natural, sin conservantes.',ing:'Fruta natural, agua',allerg:[],veg:true,vegan:true,price:5000},
-  {id:'p17',cat:'bebidas',em:'🧊',name:'Té frío',desc:'Té frío refrescante, endulzado ligeramente.',ing:'Té, agua, endulzante natural',allerg:[],veg:true,vegan:true,price:4500},
-  {id:'p18',cat:'bebidas',em:'🥤',name:'Batido de frutas',desc:'Batido cremoso de frutas con leche.',ing:'Frutas, leche',allerg:['lactosa'],veg:true,vegan:false,price:6000},
-  {id:'p19',cat:'bebidas',em:'🥤',name:'Bebida sin azúcar',desc:'Refresco natural sin azúcar añadida.',ing:'Agua saborizada, sin azúcar',allerg:[],veg:true,vegan:true,price:4000},
+  {id:'p15',cat:'bebidas',em:'💧',name:'Agua',desc:'Agua natural en botella.',ing:'Agua',allerg:[],veg:true,vegan:true,price:3000,nutri:{kcal:0,prot:0,carb:0,fat:0,fiber:0,portion:'500 ml'}},
+  {id:'p16',cat:'bebidas',em:'🧃',name:'Jugo natural',desc:'Jugo de fruta natural, sin conservantes.',ing:'Fruta natural, agua',allerg:[],veg:true,vegan:true,price:5000,nutri:{kcal:110,prot:1,carb:26,fat:0,fiber:2,portion:'350 ml'}},
+  {id:'p17',cat:'bebidas',em:'🧊',name:'Té frío',desc:'Té frío refrescante, endulzado ligeramente.',ing:'Té, agua, endulzante natural',allerg:[],veg:true,vegan:true,price:4500,nutri:{kcal:60,prot:0,carb:15,fat:0,fiber:0,portion:'350 ml'}},
+  {id:'p18',cat:'bebidas',em:'🥤',name:'Batido de frutas',desc:'Batido cremoso de frutas con leche.',ing:'Frutas, leche',allerg:['lactosa'],veg:true,vegan:false,price:6000,nutri:{kcal:230,prot:7,carb:38,fat:6,fiber:2,portion:'400 ml'}},
+  {id:'p19',cat:'bebidas',em:'🥤',name:'Bebida sin azúcar',desc:'Refresco natural sin azúcar añadida.',ing:'Agua saborizada, sin azúcar',allerg:[],veg:true,vegan:true,price:4000,nutri:{kcal:5,prot:0,carb:1,fat:0,fiber:0,portion:'350 ml'}},
 ];
 
 const DRINKS = PRODUCTS.filter(p=>p.cat==='bebidas');
@@ -820,6 +952,67 @@ function buildDefaultSelections(productId){
   return sel;
 }
 
+/* =====================================================
+   PLANES FIT & COMBOS FIT — precios y contenido demostrativos,
+   fáciles de editar desde aquí.
+===================================================== */
+const SLOT_META = {
+  desayuno:{label:'Desayuno',em:'🥣',cat:'desayunos'},
+  almuerzo:{label:'Almuerzo',em:'🍗',cat:'almuerzos'},
+  snack:{label:'Snack',em:'🍇',cat:'snacks'},
+  bebida:{label:'Bebida',em:'🥤',cat:'bebidas'},
+};
+const DAY_NAMES = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+const DEFAULT_MENU = {
+  desayuno:['p2','p1','p3','p2','p1','p3','p1'],
+  almuerzo:['p4','p7','p5','p6','p4','p5','p7'],
+  snack:['p8','p9','p11','p8','p10','p9','p8'],
+  bebida:['p16','p17','p15','p16','p19','p17','p16'],
+};
+const PLAN_TIERS = {
+  semanal:[
+    {id:'sem_basico',label:'Plan Semanal Básico',desc:'5 almuerzos + 5 bebidas',slots:['almuerzo','bebida'],normalPrice:75000,planPrice:69900},
+    {id:'sem_completo',label:'Plan Semanal Completo',desc:'5 almuerzos + 5 bebidas + 5 snacks',slots:['almuerzo','bebida','snack'],normalPrice:105000,planPrice:94900},
+    {id:'sem_full',label:'Plan Semanal Full',desc:'5 desayunos + 5 almuerzos + 5 snacks + 5 bebidas',slots:['desayuno','almuerzo','snack','bebida'],normalPrice:145000,planPrice:129900},
+  ],
+  mensual:[
+    {id:'mes_basico',label:'Plan Mensual Básico',desc:'20 almuerzos + 20 bebidas',slots:['almuerzo','bebida'],normalPrice:280000,planPrice:259900},
+    {id:'mes_completo',label:'Plan Mensual Completo',desc:'20 almuerzos + 20 bebidas + 20 snacks',slots:['almuerzo','bebida','snack'],normalPrice:400000,planPrice:369900},
+    {id:'mes_full',label:'Plan Mensual Full',desc:'20 desayunos + 20 almuerzos + 20 snacks + 20 bebidas',slots:['desayuno','almuerzo','snack','bebida'],normalPrice:560000,planPrice:519900},
+  ],
+};
+function findTier(planType, tierId){ return PLAN_TIERS[planType].find(t=>t.id===tierId); }
+
+const COMBOS = [
+  {id:'combo1',name:'Combo Energía',em:'⚡',items:['p4','p16','p8'],normalPrice:28000,comboPrice:24900},
+  {id:'combo2',name:'Combo Express',em:'🚀',items:['p7','p17','p9'],normalPrice:24000,comboPrice:21900},
+  {id:'combo3',name:'Combo Proteína',em:'💪',items:['p6','p18','p9'],normalPrice:32000,comboPrice:28900},
+];
+
+/* "Combina bien con..." — pares coherentes por producto (fácil de editar) */
+const RECOMMENDATIONS = {
+  p1:['p9','p16'], p2:['p16','p8'], p3:['p17','p8'],
+  p4:['p16','p1'], p5:['p19','p8'], p6:['p18','p9'], p7:['p17','p11'],
+  p8:['p9','p15'], p9:['p8','p11'], p10:['p16','p15'], p11:['p17','p8'],
+  p12:['p16','p9'], p13:['p17','p15'], p14:['p16','p15'],
+  p15:['p13','p8'], p16:['p4','p1'], p17:['p7','p11'], p18:['p6','p9'], p19:['p5','p8'],
+};
+
+/* Cupones demostrativos — fácil de editar/ampliar */
+const COUPONS = {
+  FIT10:{percent:10, label:'10% de descuento', scope:'all'},
+  BIENVENIDO:{percent:5, label:'5% de descuento de bienvenida', scope:'all'},
+  FITCOMBO:{percent:15, label:'15% de descuento en combos', scope:'combo'},
+};
+
+/* FIT Puntos: 1 punto por cada $1.000 COP de compra */
+const POINTS_PER_COP = 1/1000;
+const POINTS_REWARDS = [
+  {points:200, label:'Bebida gratis', em:'🥤'},
+  {points:400, label:'Snack gratis', em:'🍪'},
+  {points:600, label:'Descuento especial', em:'💚'},
+];
+
 const RESTRICTIONS = [
   {id:'lactosa',em:'🥛',label:'Intolerancia a la lactosa'},
   {id:'gluten',em:'🌾',label:'Intolerancia al gluten'},
@@ -859,16 +1052,23 @@ function loadDB(){
     const raw = localStorage.getItem(DB_KEY);
     if(raw) return JSON.parse(raw);
   }catch(e){}
-  return {users:[], sessionId:null, data:{}};
+  return {users:[], sessionId:null, data:{}, reviews:{}, settings:{dark:false, largeText:false, highContrast:false, reduceMotion:false}};
 }
 function saveDB(){ try{ localStorage.setItem(DB_KEY, JSON.stringify(db)); }catch(e){} }
 
 let db = loadDB();
+if(!db.reviews) db.reviews = {};
+if(!db.settings) db.settings = {dark:false, largeText:false, highContrast:false, reduceMotion:false};
 
 function userData(){
   if(!db.sessionId) return null;
   if(!db.data[db.sessionId]) db.data[db.sessionId] = {cart:[], favorites:[], orders:[], restrictions:[], restrictionNote:''};
-  return db.data[db.sessionId];
+  const ud = db.data[db.sessionId];
+  if(ud.points===undefined) ud.points = 0;
+  if(!ud.notifications) ud.notifications = [];
+  if(ud.appliedCoupon===undefined) ud.appliedCoupon = null;
+  if(!ud.usedCoupons) ud.usedCoupons = [];
+  return ud;
 }
 
 const state = {
@@ -876,9 +1076,18 @@ const state = {
   user: null,
   currentProduct:null,
   customize:{adds:[], drink:null, qty:1},
-  checkout:{location:null, locExtra:'', deliveryTime:null, deliveryTimeIsOther:false, usingProfileFloor:null, usingProfileRoom:'', payment:null},
+  planCtx:null,
+  checkout:{location:null, locExtra:'', deliveryTime:null, deliveryTimeIsOther:false, usingProfileFloor:null, usingProfileRoom:'', payment:null, paySim:null},
   authTab:'login',
   profileUnivEdit:false,
+  planTab:'semanal',
+  planBuilder:null,
+  unitEditor:null,
+  notifOpen:false,
+  ratingModal:null,
+  adminFilter:'todos',
+  profileTab2:'puntos',
+  prevView:'home',
 };
 
 function currentUserObj(){
@@ -891,6 +1100,7 @@ function currentUserObj(){
 const NAV_ITEMS = [
   {id:'home', label:'Inicio', em:'🏠'},
   {id:'menu', label:'Menú', em:'🍽️'},
+  {id:'plans', label:'Planes Fit', em:'📅'},
   {id:'favorites', label:'Favoritos', em:'❤️'},
   {id:'cart', label:'Carrito', em:'🛒'},
   {id:'orders', label:'Mis pedidos', em:'📦'},
@@ -910,6 +1120,39 @@ function renderNavs(){
   `).join('');
   const dot = document.getElementById('cartDotTop');
   if(dot) dot.classList.toggle('show', cartCount>0);
+  const ud = userData();
+  const unread = ud ? ud.notifications.filter(n=>!n.read).length : 0;
+  const ndot = document.getElementById('notifDotTop');
+  if(ndot) ndot.classList.toggle('show', unread>0);
+}
+
+/* ---------- Notifications ---------- */
+function pushNotification(ud, text){
+  if(!ud) return;
+  ud.notifications.unshift({text, date:new Date().toLocaleString('es-CO',{dateStyle:'medium',timeStyle:'short'}), read:false});
+  ud.notifications = ud.notifications.slice(0,30);
+}
+function toggleNotifDrawer(){
+  if(!db.sessionId){ go('auth'); return; }
+  state.notifOpen = !state.notifOpen;
+  if(state.notifOpen){
+    const ud = userData();
+    ud.notifications.forEach(n=>n.read=true);
+    saveDB();
+  }
+  renderNotifDrawer();
+  renderNavs();
+}
+function renderNotifDrawer(){
+  const el = document.getElementById('notifDrawer');
+  el.classList.toggle('open', state.notifOpen);
+  if(!state.notifOpen) return;
+  const ud = userData();
+  const items = ud ? ud.notifications : [];
+  el.innerHTML = `
+    <div class="notif-head"><span>Notificaciones</span><button class="btn-sm btn-ghost" onclick="toggleNotifDrawer()">Cerrar</button></div>
+    ${items.length ? items.map(n=>`<div class="notif-item">${n.text}<div class="t">${n.date}</div></div>`).join('') : `<div class="notif-empty">Aún no tienes notificaciones.</div>`}
+  `;
 }
 
 function go(view){
@@ -918,8 +1161,10 @@ function go(view){
     return;
   }
   if(view==='payment' && !state.checkout.location){ view='location'; }
-  if(view==='summary' && !state.checkout.payment){ view='payment'; }
+  if(view==='summary' && (!state.checkout.payment || state.checkout.paySim!=='approved')){ view='payment'; }
+  if(view!=='admin') state.prevView = view;
   state.view = view;
+  state.notifOpen = false;
   window.scrollTo({top:0,behavior:'smooth'});
   renderAll();
 }
@@ -929,8 +1174,10 @@ function renderAll(){
   const el = document.getElementById('view-'+state.view);
   if(el) el.classList.add('active');
   renderNavs();
+  renderNotifDrawer();
   if(state.view==='home') renderHome();
   if(state.view==='menu') renderMenu();
+  if(state.view==='plans') renderPlansView();
   if(state.view==='favorites') renderFavorites();
   if(state.view==='cart') renderCart();
   if(state.view==='location') renderLocation();
@@ -938,6 +1185,7 @@ function renderAll(){
   if(state.view==='summary') renderSummary();
   if(state.view==='orders') renderOrders();
   if(state.view==='profile') renderProfile();
+  if(state.view==='admin') renderAdmin();
 }
 
 /* =====================================================
@@ -950,6 +1198,14 @@ function renderHome(){
     </button>`).join('');
   const picks = [PRODUCTS[3], PRODUCTS[4], PRODUCTS[0], PRODUCTS[15]];
   document.getElementById('homePopular').innerHTML = picks.map(p=>foodCardHTML(p)).join('');
+  const forYou = favoritesBasedPicks();
+  const section = document.getElementById('homeForYouSection');
+  if(forYou.length){
+    section.style.display = '';
+    document.getElementById('homeForYou').innerHTML = forYou.map(p=>foodCardHTML(p)).join('');
+  } else {
+    section.style.display = 'none';
+  }
 }
 function openCategory(cat){ state.menuCat=cat; go('menu'); }
 
@@ -1029,16 +1285,141 @@ function toggleFav(id, ev){
   saveDB(); renderAll();
 }
 
-function foodCardHTML(p){
-  const conflicts = productConflicts(p);
+function productTags(p){
   const tags = [];
   if(p.vegan) tags.push('Vegano'); else if(p.veg) tags.push('Vegetariano');
+  if(p.nutri && p.nutri.prot>=15) tags.push('Alto en proteína');
+  if(!p.allerg.includes('lactosa')) tags.push('Sin lactosa');
+  if(!p.allerg.includes('gluten')) tags.push('Sin gluten');
+  return tags;
+}
+
+/* ---------- Ratings & reviews (simuladas, guardadas localmente) ---------- */
+function productReviews(productId){ return (db.reviews && db.reviews[productId]) || []; }
+function productAvgRating(productId){
+  const revs = productReviews(productId);
+  if(!revs.length) return null;
+  return (revs.reduce((s,r)=>s+r.rating,0)/revs.length).toFixed(1);
+}
+function starsHTML(rating, interactive, groupName){
+  let out = `<span class="stars ${interactive?'interactive':''}">`;
+  for(let i=1;i<=5;i++){
+    out += interactive
+      ? `<span class="st ${i<=rating?'on':''}" onclick="setRatingStars(${i})">★</span>`
+      : `<span class="st ${i<=Math.round(rating)?'on':''}">★</span>`;
+  }
+  return out+'</span>';
+}
+function reviewsSummaryHTML(productId){
+  const revs = productReviews(productId);
+  const avg = productAvgRating(productId);
+  const head = avg
+    ? `<div class="rating-line">${starsHTML(avg,false)} <b style="color:var(--ink);">${avg}</b> · ${revs.length} reseña${revs.length===1?'':'s'}</div>`
+    : `<div class="rating-line">Este producto aún no tiene reseñas.</div>`;
+  const list = revs.slice(-3).reverse().map(r=>`
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line);">
+      ${starsHTML(r.rating,false)}
+      ${r.comment?`<p style="font-size:.85rem;color:var(--ink-soft);margin-top:4px;">"${r.comment}"</p>`:''}
+      <p style="font-size:.7rem;color:var(--ink-soft);margin-top:2px;">${r.userName} · ${r.date}</p>
+    </div>`).join('');
+  return head+list;
+}
+function recommendationsHTML(productId){
+  const ids = RECOMMENDATIONS[productId] || [];
+  if(!ids.length) return `<p class="hint" style="text-align:left;">Sin recomendaciones para este producto.</p>`;
+  return ids.map(pid=>{
+    const rp = PRODUCTS.find(x=>x.id===pid);
+    if(!rp) return '';
+    return `<div class="opt-row">
+      <div class="opt-info"><span class="opt-em">${rp.em}</span>
+        <div><div class="opt-name">${rp.name}</div><div class="opt-price">$${fmt(rp.price)} COP</div></div>
+      </div>
+      <button class="btn-sm btn-outline" onclick="quickAddToCart('${rp.id}')">Agregar</button>
+    </div>`;
+  }).join('');
+}
+function quickAddToCart(productId){
+  if(!db.sessionId){ go('auth'); return; }
+  const p = PRODUCTS.find(x=>x.id===productId);
+  const ud = userData();
+  ud.cart.push({
+    uid:'ci_'+Date.now()+Math.random().toString(36).slice(2,6),
+    productId:p.id, name:p.name, em:p.em, basePrice:p.price,
+    selections: buildDefaultSelections(p.id), pairedDrink:null, qty:1, units:null,
+  });
+  saveDB(); renderNavs();
+  showToast(`${p.name} agregado al carrito 🛒`);
+  if(state.view==='menu'||state.view==='home'||state.view==='favorites') renderAll();
+}
+
+/* "Basado en tus favoritos" — para inicio, cuando el usuario ya tiene favoritos o historial */
+function favoritesBasedPicks(){
+  const ud = userData();
+  if(!ud) return [];
+  const seeds = new Set();
+  ud.favorites.forEach(id=>seeds.add(id));
+  ud.orders.forEach(o=>o.items.forEach(i=>{ if(i.productId) seeds.add(i.productId); }));
+  const picks = new Set();
+  [...seeds].forEach(id=>{ (RECOMMENDATIONS[id]||[]).forEach(pid=>picks.add(pid)); });
+  seeds.forEach(id=>picks.delete(id));
+  return [...picks].map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean).slice(0,4);
+}
+
+/* ---------- Rating modal (calificar un producto de un pedido entregado) ---------- */
+function openRatingModal(orderId, productId){
+  const p = PRODUCTS.find(x=>x.id===productId);
+  state.ratingModal = {orderId, productId, stars:5, comment:''};
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-body" style="padding-top:24px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h3>¿Qué te pareció tu ${p.name}?</h3>
+        <button class="modal-close" style="position:static;" onclick="closeModal()">✕</button>
+      </div>
+      <div style="margin-top:14px;">${starsHTML(5,true)}</div>
+      <div class="field" style="margin-top:16px;">
+        <label>Comentario (opcional)</label>
+        <textarea id="ratingComment" placeholder="Cuéntanos tu experiencia..."></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary btn-block" onclick="submitRating()">Enviar calificación</button>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function setRatingStars(n){
+  if(!state.ratingModal) return;
+  state.ratingModal.stars = n;
+  document.querySelectorAll('#modalBody .stars.interactive .st').forEach((el,i)=>el.classList.toggle('on', i<n));
+}
+function submitRating(){
+  const rm = state.ratingModal;
+  if(!rm) return;
+  const u = currentUserObj();
+  const ud = userData();
+  const comment = document.getElementById('ratingComment').value.trim();
+  if(!db.reviews[rm.productId]) db.reviews[rm.productId] = [];
+  db.reviews[rm.productId].push({rating:rm.stars, comment, userName:u?u.name.split(' ')[0]:'Estudiante', date:new Date().toLocaleDateString('es-CO')});
+  const order = ud.orders.find(o=>o.id===rm.orderId);
+  if(order){ order.ratedProducts = order.ratedProducts || []; order.ratedProducts.push(rm.productId); }
+  saveDB();
+  closeModal();
+  state.ratingModal = null;
+  showToast('¡Gracias por tu calificación! ⭐');
+  renderAll();
+}
+
+function foodCardHTML(p){
+  const conflicts = productConflicts(p);
+  const tags = productTags(p);
+  const avg = productAvgRating(p.id);
   return `
   <div class="food-card ${p.cat}" onclick="openProduct('${p.id}')">
     <div class="food-media">
-      <span>${p.em}</span>
+      <div class="media-art"><div class="plate"><span class="em">${p.em}</span></div></div>
+      <div class="surface"></div>
       <button class="fav-toggle ${isFav(p.id)?'on':''}" onclick="toggleFav('${p.id}',event)">${isFav(p.id)?'❤️':'🤍'}</button>
-      <div class="tag-row">${tags.map(t=>`<span class="mini-tag">${t}</span>`).join('')}</div>
+      <div class="tag-row">${tags.slice(0,2).map(t=>`<span class="mini-tag">${t}</span>`).join('')}${avg?`<span class="mini-tag">⭐ ${avg}</span>`:''}</div>
     </div>
     <div class="food-body">
       <h4>${p.name}</h4>
@@ -1069,14 +1450,27 @@ function renderFavorites(){
 /* =====================================================
    PRODUCT MODAL
 ===================================================== */
-function openProduct(id){
+function openProduct(id, planCtx){
   const p = PRODUCTS.find(x=>x.id===id);
   state.currentProduct = p;
-  state.customize = {selections: buildDefaultSelections(p.id), drink:null, qty:1};
+  state.planCtx = planCtx || null;
+  if(planCtx && planCtx.existing && planCtx.existing.productId===id){
+    state.customize = {
+      selections: JSON.parse(JSON.stringify(planCtx.existing.selections || buildDefaultSelections(id))),
+      drink: planCtx.existing.pairedDrink || null,
+      qty: 1,
+    };
+  } else {
+    state.customize = {selections: buildDefaultSelections(id), drink:null, qty:1};
+  }
   renderModal();
   document.getElementById('modalOverlay').classList.add('open');
 }
-function closeModal(){ document.getElementById('modalOverlay').classList.remove('open'); }
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  state.planCtx = null;
+  state.ratingModal = null;
+}
 
 function toggleMultiOption(groupId, optId){
   const arr = state.customize.selections[groupId] || (state.customize.selections[groupId]=[]);
@@ -1158,20 +1552,44 @@ function renderModal(){
   const p = state.currentProduct;
   const cfg = CUSTOM_CONFIGS[p.id];
   const showWarn = [...collectSelectionAllergens()].some(a=>userRestrictions().includes(a));
+  const planCtx = state.planCtx;
 
   document.getElementById('modalBody').innerHTML = `
-    <div class="modal-hero"><span>${p.em}</span><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div class="modal-hero"><div class="media-art"><div class="plate"><span class="em" style="font-size:3.4rem;">${p.em}</span></div></div><div class="surface"></div><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div class="modal-body">
       <h3>${p.name}</h3>
       <p class="desc">${p.desc}</p>
       <p class="ingredients-line"><b>Ingredientes:</b> ${p.ing}</p>
       ${p.allerg.length?`<div class="allergen-row" style="margin-top:8px;">${p.allerg.map(a=>`<span class="allergen-pill">${ALLERGEN_LABELS[a]}</span>`).join('')}</div>`:''}
 
+      <div class="modal-sec">
+        <h4>Información nutricional <span style="font-weight:600;color:var(--ink-soft);font-size:.72rem;">(orientativa, prototipo)</span></h4>
+        <div class="nutri-grid">
+          <div class="nutri-cell"><b>${p.nutri.kcal}</b><span>Kcal</span></div>
+          <div class="nutri-cell"><b>${p.nutri.prot} g</b><span>Proteína</span></div>
+          <div class="nutri-cell"><b>${p.nutri.carb} g</b><span>Carbohidratos</span></div>
+          <div class="nutri-cell"><b>${p.nutri.fat} g</b><span>Grasas</span></div>
+          <div class="nutri-cell"><b>${p.nutri.fiber} g</b><span>Fibra</span></div>
+          <div class="nutri-cell"><b>${p.nutri.portion}</b><span>Porción</span></div>
+        </div>
+        <div class="tag-row" style="position:static;margin-top:10px;">${productTags(p).map(t=>`<span class="mini-tag" style="background:var(--beige);">${t}</span>`).join('')}</div>
+      </div>
+
+      <div class="modal-sec">
+        <h4>Calificación y reseñas</h4>
+        ${reviewsSummaryHTML(p.id)}
+      </div>
+
+      ${!planCtx ? `<div class="modal-sec">
+        <h4>Combina bien con...</h4>
+        ${recommendationsHTML(p.id)}
+      </div>` : ''}
+
       ${showWarn?`<div class="warn-banner"><span class="em">⚠️</span><span>Atención: este producto contiene un ingrediente relacionado con una restricción registrada en tu perfil. Revisa los ingredientes antes de continuar.</span></div>`:''}
 
       ${cfg ? cfg.groups.map(g=>renderCustomGroup(g)).join('') : ''}
 
-      ${p.cat!=='bebidas' ? `
+      ${(p.cat!=='bebidas' && !planCtx) ? `
       <div class="modal-sec">
         <h4>Elige una bebida</h4>
         ${DRINKS.map(d=>{
@@ -1184,6 +1602,7 @@ function renderModal(){
         }).join('')}
       </div>` : ''}
 
+      ${planCtx ? `<p class="hint" style="text-align:left;">Esta selección se guardará en tu plan — el precio del plan se mantiene fijo según el paquete elegido.</p>` : `
       <div class="qty-row">
         <h4 style="margin:0;">Cantidad</h4>
         <div class="stepper">
@@ -1191,11 +1610,11 @@ function renderModal(){
           <b>${state.customize.qty}</b>
           <button onclick="changeQty(1)">+</button>
         </div>
-      </div>
+      </div>`}
     </div>
     <div class="modal-foot">
-      <div class="modal-total"><span>Total</span><span>$${fmt(computeModalTotal())} COP</span></div>
-      <button class="btn btn-primary btn-block" onclick="confirmAddToCart()">Agregar al carrito</button>
+      ${planCtx ? '' : `<div class="modal-total"><span>Total</span><span>$${fmt(computeModalTotal())} COP</span></div>`}
+      <button class="btn btn-primary btn-block" onclick="${planCtx?'confirmPlanSlotSelection()':'confirmAddToCart()'}">${planCtx?'Guardar selección':'Agregar al carrito'}</button>
     </div>
   `;
 }
@@ -1220,6 +1639,7 @@ function confirmAddToCart(){
     selections: JSON.parse(JSON.stringify(state.customize.selections)),
     pairedDrink: state.customize.drink,
     qty: state.customize.qty,
+    units: null,
   });
   saveDB();
   closeModal();
@@ -1230,19 +1650,45 @@ function confirmAddToCart(){
 /* =====================================================
    CART
 ===================================================== */
+function unitPrice(productId, basePrice, selections){
+  const cfg = CUSTOM_CONFIGS[productId];
+  let total = basePrice;
+  if(cfg) cfg.groups.forEach(g=>{
+    const sel = selections ? selections[g.id] : null;
+    if(g.type==='multi'){ (sel||[]).forEach(oid=>{ const o=g.options.find(x=>x.id===oid); if(o) total+=o.price; }); }
+    else { const o=g.options.find(x=>x.id===sel); if(o) total+=o.price; }
+  });
+  return total;
+}
 function itemExtraLines(item){
+  if(item.kind==='combo'){ return item.items.map(i=>`${i.em} ${i.name}`); }
+  if(item.kind==='plan'){ return [`${item.days.length} días de menú configurados`]; }
   const cfg = CUSTOM_CONFIGS[item.productId];
   const lines = [];
-  if(cfg) cfg.groups.forEach(g=>{
-    const sel = item.selections ? item.selections[g.id] : null;
-    if(g.type==='multi'){
-      const chosen = (sel||[]).map(oid=>{ const o=g.options.find(x=>x.id===oid); return o?o.label:null; }).filter(Boolean);
-      if(chosen.length) lines.push(`${g.title}: ${chosen.join(', ')}`);
-    } else {
-      const o = g.options.find(x=>x.id===sel);
-      if(o) lines.push(`${g.title}: ${o.label}`);
-    }
-  });
+  if(item.units && item.units.length){
+    item.units.forEach((u,idx)=>{
+      const parts=[];
+      if(cfg) cfg.groups.forEach(g=>{
+        const sel = u.selections[g.id];
+        if(g.type==='multi'){
+          const chosen=(sel||[]).map(oid=>{ const o=g.options.find(x=>x.id===oid); return o?o.label:null; }).filter(Boolean);
+          if(chosen.length) parts.push(chosen.join(', '));
+        } else { const o=g.options.find(x=>x.id===sel); if(o) parts.push(o.label); }
+      });
+      lines.push(`Unidad ${idx+1}: ${parts.length?parts.join(' · '):'Estándar'}`);
+    });
+  } else if(cfg){
+    cfg.groups.forEach(g=>{
+      const sel = item.selections ? item.selections[g.id] : null;
+      if(g.type==='multi'){
+        const chosen = (sel||[]).map(oid=>{ const o=g.options.find(x=>x.id===oid); return o?o.label:null; }).filter(Boolean);
+        if(chosen.length) lines.push(`${g.title}: ${chosen.join(', ')}`);
+      } else {
+        const o = g.options.find(x=>x.id===sel);
+        if(o) lines.push(`${g.title}: ${o.label}`);
+      }
+    });
+  }
   if(item.pairedDrink){
     const d = DRINKS.find(x=>x.id===item.pairedDrink);
     if(d) lines.push(`Bebida: ${d.name}`);
@@ -1250,13 +1696,13 @@ function itemExtraLines(item){
   return lines;
 }
 function cartItemTotal(item){
-  const cfg = CUSTOM_CONFIGS[item.productId];
-  let total = item.basePrice * item.qty;
-  if(cfg) cfg.groups.forEach(g=>{
-    const sel = item.selections ? item.selections[g.id] : null;
-    if(g.type==='multi'){ (sel||[]).forEach(oid=>{ const o=g.options.find(x=>x.id===oid); if(o) total += o.price*item.qty; }); }
-    else { const o=g.options.find(x=>x.id===sel); if(o) total += o.price*item.qty; }
-  });
+  if(item.kind==='combo' || item.kind==='plan'){ return item.price * (item.qty||1); }
+  let total;
+  if(item.units && item.units.length){
+    total = item.units.reduce((s,u)=>s+unitPrice(item.productId, item.basePrice, u.selections), 0);
+  } else {
+    total = unitPrice(item.productId, item.basePrice, item.selections) * item.qty;
+  }
   if(item.pairedDrink){ total += DRINKS.find(d=>d.id===item.pairedDrink).price * item.qty; }
   return total;
 }
@@ -1266,17 +1712,67 @@ function cartSubtotal(){
 }
 function deliveryFee(){ return cartSubtotal()>0 ? 0 : 0; } // entrega gratuita dentro del campus
 
+/* ---------- Cupones ---------- */
+function couponDiscount(){
+  const ud = userData();
+  if(!ud || !ud.appliedCoupon) return 0;
+  const c = COUPONS[ud.appliedCoupon];
+  if(!c) return 0;
+  if(c.scope==='combo'){
+    const comboSubtotal = ud.cart.filter(i=>i.kind==='combo').reduce((s,i)=>s+cartItemTotal(i),0);
+    return Math.round(comboSubtotal * c.percent/100);
+  }
+  return Math.round(cartSubtotal() * c.percent/100);
+}
+function cartFinalTotal(){ return Math.max(0, cartSubtotal() + deliveryFee() - couponDiscount()); }
+function applyCoupon(){
+  const ud = userData();
+  const input = document.getElementById('couponInput');
+  const code = input.value.trim().toUpperCase();
+  if(!code) return;
+  if(!COUPONS[code]){ showToast('Cupón no válido'); return; }
+  if(ud.usedCoupons.includes(code)){ showToast('Ya usaste este cupón antes'); return; }
+  if(ud.appliedCoupon===code){ showToast('Ese cupón ya está aplicado'); return; }
+  ud.appliedCoupon = code;
+  saveDB();
+  showToast('✓ Cupón aplicado');
+  renderCart();
+}
+function removeCoupon(){
+  const ud = userData();
+  ud.appliedCoupon = null;
+  saveDB();
+  renderCart();
+}
+
 function changeCartQty(uid, d){
   const ud = userData();
   const item = ud.cart.find(i=>i.uid===uid);
   if(!item) return;
-  item.qty = Math.max(1, item.qty+d);
+  const newQty = Math.max(1, item.qty+d);
+  if(item.units && item.units.length){
+    if(newQty > item.units.length){
+      const last = item.units[item.units.length-1];
+      while(item.units.length < newQty){ item.units.push({selections: JSON.parse(JSON.stringify(last.selections))}); }
+    } else if(newQty < item.units.length){
+      item.units = item.units.slice(0, newQty);
+    }
+  }
+  item.qty = newQty;
   saveDB(); renderCart(); renderNavs();
 }
 function removeCartItem(uid){
   const ud = userData();
   ud.cart = ud.cart.filter(i=>i.uid!==uid);
   saveDB(); renderCart(); renderNavs();
+}
+function useSameForAllUnits(uid){
+  const ud = userData();
+  const item = ud.cart.find(i=>i.uid===uid);
+  if(!item) return;
+  item.units = null;
+  saveDB(); renderCart(); renderNavs();
+  showToast('Ahora todas las unidades comparten la misma personalización');
 }
 
 function renderCart(){
@@ -1287,7 +1783,10 @@ function renderCart(){
     return;
   }
   const itemsHtml = cart.map(item=>{
+    if(item.kind && item.kind!=='food') return cartSpecialItemHTML(item);
     const extras = itemExtraLines(item).join(' · ');
+    const cfg = CUSTOM_CONFIGS[item.productId];
+    const canPersonalizeUnits = item.qty>1 && cfg && cfg.groups.length>0;
     return `<div class="cart-item">
       <div class="cart-thumb">${item.em}</div>
       <div class="cart-info">
@@ -1301,21 +1800,382 @@ function renderCart(){
           </div>
           <b style="font-size:.92rem;">$${fmt(cartItemTotal(item))}</b>
         </div>
-        <button class="remove-link" onclick="removeCartItem('${item.uid}')" style="margin-top:6px;">Eliminar</button>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;">
+          ${canPersonalizeUnits?`<button class="remove-link" style="color:var(--mint-deep);" onclick="openUnitEditor('${item.uid}')">${item.units?'Editar unidades':'Personalizar unidades'}</button>`:''}
+          ${item.units?`<button class="remove-link" style="color:var(--ink-soft);" onclick="useSameForAllUnits('${item.uid}')">Usar la misma para todas</button>`:''}
+          <button class="remove-link" onclick="removeCartItem('${item.uid}')">Eliminar</button>
+        </div>
       </div>
     </div>`;
   }).join('');
 
   const subtotal = cartSubtotal();
   const fee = deliveryFee();
+  const discount = couponDiscount();
+  const couponHtml = ud.appliedCoupon
+    ? `<div class="coupon-applied"><span>✓ Cupón <b>${ud.appliedCoupon}</b> aplicado — ${COUPONS[ud.appliedCoupon].label}</span><button class="remove-link" onclick="removeCoupon()">Quitar</button></div>`
+    : `<div class="coupon-row">
+        <input id="couponInput" placeholder="¿Tienes un código de descuento?">
+        <button class="btn btn-soft btn-sm" onclick="applyCoupon()">Aplicar</button>
+      </div>`;
   document.getElementById('cartContent').innerHTML = `
     ${itemsHtml}
+    ${couponHtml}
     <div class="summary-box">
       <div class="summary-line"><span>Subtotal</span><span>$${fmt(subtotal)}</span></div>
+      ${discount?`<div class="summary-line"><span>Cupón (${ud.appliedCoupon})</span><span>-$${fmt(discount)}</span></div>`:''}
       <div class="summary-line"><span>Entrega en campus</span><span>${fee? '$'+fmt(fee) : 'Gratis'}</span></div>
-      <div class="summary-line total"><span>Total</span><span>$${fmt(subtotal+fee)}</span></div>
+      <div class="summary-line total"><span>Total</span><span>$${fmt(subtotal+fee-discount)}</span></div>
     </div>
     <button class="btn btn-primary btn-block" style="margin-top:18px;" onclick="go('location')">Continuar pedido</button>
+  `;
+}
+
+/* ---- Unit-by-unit customization editor ---- */
+function openUnitEditor(uid){
+  const ud = userData();
+  const item = ud.cart.find(i=>i.uid===uid);
+  if(!item) return;
+  const cfg = CUSTOM_CONFIGS[item.productId];
+  if(!cfg || !cfg.groups.length){ showToast('Este producto no tiene opciones personalizables'); return; }
+  let units;
+  if(item.units && item.units.length===item.qty){
+    units = JSON.parse(JSON.stringify(item.units));
+  } else {
+    const base = item.selections || buildDefaultSelections(item.productId);
+    units = Array.from({length:item.qty}, ()=>({selections: JSON.parse(JSON.stringify(base))}));
+  }
+  state.unitEditor = {uid, productId:item.productId, name:item.name, em:item.em, basePrice:item.basePrice, units};
+  renderUnitEditor();
+  document.getElementById('unitModalOverlay').classList.add('open');
+}
+function closeUnitEditor(){
+  document.getElementById('unitModalOverlay').classList.remove('open');
+  state.unitEditor = null;
+}
+function toggleUnitMulti(idx, groupId, optId){
+  const sel = state.unitEditor.units[idx].selections;
+  const arr = sel[groupId] || (sel[groupId]=[]);
+  const i = arr.indexOf(optId);
+  if(i>-1) arr.splice(i,1); else arr.push(optId);
+  renderUnitEditor();
+}
+function selectUnitSingle(idx, groupId, optId){
+  state.unitEditor.units[idx].selections[groupId] = optId;
+  renderUnitEditor();
+}
+function renderUnitGroup(idx, g, selections){
+  if(g.type==='multi'){
+    return `<div class="modal-sec" style="margin-top:14px;"><h4 style="font-size:.85rem;">${g.title}</h4>
+      ${g.options.map(o=>{
+        const on = (selections[g.id]||[]).includes(o.id);
+        return `<div class="opt-row" onclick="toggleUnitMulti(${idx},'${g.id}','${o.id}')" style="cursor:pointer;padding:8px 0;">
+          <div class="opt-info"><div><div class="opt-name" style="font-size:.85rem;">${o.label}</div>${o.price?`<div class="opt-price">+$${fmt(o.price)}</div>`:''}</div></div>
+          <div class="opt-check ${on?'on':''}" style="width:20px;height:20px;">${on?'✓':''}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }
+  return `<div class="modal-sec" style="margin-top:14px;"><h4 style="font-size:.85rem;">${g.title}</h4>
+    ${g.options.map(o=>{
+      const on = selections[g.id]===o.id;
+      return `<div class="drink-pick ${on?'on':''}" onclick="selectUnitSingle(${idx},'${g.id}','${o.id}')" style="cursor:pointer;padding:8px 10px;">
+        <div class="radio-dot ${on?'on':''}" style="width:16px;height:16px;"></div>
+        <div style="flex:1;"><div class="opt-name" style="font-size:.85rem;">${o.label}</div></div>
+        ${o.price?`<div class="opt-price">+$${fmt(o.price)}</div>`:''}
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+function renderUnitEditor(){
+  const ue = state.unitEditor;
+  const cfg = CUSTOM_CONFIGS[ue.productId];
+  const cards = ue.units.map((u,idx)=>{
+    const price = unitPrice(ue.productId, ue.basePrice, u.selections);
+    return `<div class="card" style="padding:18px;margin-bottom:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h4 style="font-size:1rem;">${ue.em} ${ue.name} #${idx+1}</h4>
+        <b style="color:var(--mint-ink);">$${fmt(price)}</b>
+      </div>
+      ${cfg.groups.map(g=>renderUnitGroup(idx,g,u.selections)).join('')}
+    </div>`;
+  }).join('');
+  const total = ue.units.reduce((s,u)=>s+unitPrice(ue.productId, ue.basePrice, u.selections),0);
+  document.getElementById('unitModalBody').innerHTML = `
+    <div class="modal-body" style="padding-top:22px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h3>Personalizar unidades</h3>
+        <button class="modal-close" style="position:static;" onclick="closeUnitEditor()">✕</button>
+      </div>
+      <p class="desc" style="margin-top:4px;">Cada unidad de <b>${ue.name}</b> puede tener su propia personalización.</p>
+      <div style="margin-top:16px;">${cards}</div>
+    </div>
+    <div class="modal-foot">
+      <div class="modal-total"><span>Total (${ue.units.length} unidades)</span><span>$${fmt(total)} COP</span></div>
+      <button class="btn btn-primary btn-block" onclick="saveUnitEditor()">Guardar personalización</button>
+    </div>
+  `;
+}
+function saveUnitEditor(){
+  const ud = userData();
+  const item = ud.cart.find(i=>i.uid===state.unitEditor.uid);
+  if(!item) return;
+  item.units = state.unitEditor.units.map(u=>({selections:u.selections}));
+  saveDB();
+  closeUnitEditor();
+  renderCart();
+  renderNavs();
+  showToast('Personalización guardada para cada unidad ✅');
+}
+
+function cartSpecialItemHTML(item){
+  if(item.kind==='combo'){
+    return `<div class="cart-item">
+      <div class="cart-thumb">${item.em}</div>
+      <div class="cart-info">
+        <h4>${item.name}</h4>
+        <div class="extra">${item.items.map(i=>i.em+' '+i.name).join(' · ')}</div>
+        <div class="cart-row-bottom">
+          <span style="font-size:.78rem;color:var(--ink-soft);text-decoration:line-through;">$${fmt(item.normalPrice)}</span>
+          <b style="font-size:.92rem;">$${fmt(item.price)}</b>
+        </div>
+        <button class="remove-link" onclick="removeCartItem('${item.uid}')" style="margin-top:6px;">Eliminar</button>
+      </div>
+    </div>`;
+  }
+  if(item.kind==='plan'){
+    return `<div class="cart-item">
+      <div class="cart-thumb">${item.em}</div>
+      <div class="cart-info">
+        <h4>${item.name}</h4>
+        <div class="extra">${item.days.length} días configurados · precio especial por plan</div>
+        <div class="cart-row-bottom">
+          <span style="font-size:.78rem;color:var(--ink-soft);text-decoration:line-through;">$${fmt(item.normalPrice)}</span>
+          <b style="font-size:.92rem;">$${fmt(item.price)}</b>
+        </div>
+        <button class="remove-link" onclick="removeCartItem('${item.uid}')" style="margin-top:6px;">Eliminar</button>
+      </div>
+    </div>`;
+  }
+  return '';
+}
+
+/* =====================================================
+   PLANES FIT (semanal / mensual) & COMBOS FIT
+===================================================== */
+function switchPlanTab(tab){
+  state.planTab = tab;
+  renderPlansView();
+}
+function planWeekDays(tierSlots, dayCount, offset){
+  const days = [];
+  for(let i=0;i<dayCount;i++){
+    const slots = {};
+    tierSlots.forEach(slotKey=>{
+      const menuArr = DEFAULT_MENU[slotKey];
+      const pid = menuArr[(i+offset)%menuArr.length];
+      slots[slotKey] = {productId:pid, selections:buildDefaultSelections(pid), pairedDrink:null};
+    });
+    days.push({label: dayCount===7 ? DAY_NAMES[i] : `Día ${i+1}`, slots});
+  }
+  return days;
+}
+function startPlanBuilder(planType, tierId){
+  const tier = findTier(planType, tierId);
+  const weekCount = planType==='mensual' ? 4 : 1;
+  const weeks = [];
+  for(let w=0; w<weekCount; w++){ weeks.push(planWeekDays(tier.slots, 7, w*7)); }
+  state.planBuilder = {planType, tierId, weekIdx:0, weeks};
+  renderPlansView();
+}
+function backToPlanTiers(){ state.planBuilder = null; renderPlansView(); }
+function switchPlanWeek(idx){ state.planBuilder.weekIdx = idx; renderPlansView(); }
+function changePlanSlot(weekIdx, dayIdx, slotKey, productId){
+  const day = state.planBuilder.weeks[weekIdx][dayIdx];
+  if(!productId){ day.slots[slotKey] = null; }
+  else { day.slots[slotKey] = {productId, selections:buildDefaultSelections(productId), pairedDrink:null}; }
+  renderPlansView();
+}
+function personalizePlanSlot(weekIdx, dayIdx, slotKey){
+  const slot = state.planBuilder.weeks[weekIdx][dayIdx].slots[slotKey];
+  if(!slot) return;
+  openProduct(slot.productId, {weekIdx, dayIdx, slot:slotKey, existing:slot});
+}
+function confirmPlanSlotSelection(){
+  const p = state.currentProduct;
+  const ctx = state.planCtx;
+  state.planBuilder.weeks[ctx.weekIdx][ctx.dayIdx].slots[ctx.slot] = {
+    productId: p.id,
+    selections: JSON.parse(JSON.stringify(state.customize.selections)),
+    pairedDrink: state.customize.drink,
+  };
+  closeModal();
+  renderPlansView();
+}
+function planNormalTotal(pb){
+  let total = 0;
+  pb.weeks.forEach(week=>week.forEach(day=>{
+    Object.values(day.slots).forEach(slot=>{
+      if(!slot) return;
+      const prod = PRODUCTS.find(x=>x.id===slot.productId);
+      total += unitPrice(slot.productId, prod.price, slot.selections);
+      if(slot.pairedDrink) total += DRINKS.find(d=>d.id===slot.pairedDrink).price;
+    });
+  }));
+  return total;
+}
+function addPlanToCart(){
+  if(!db.sessionId){ go('auth'); return; }
+  const pb = state.planBuilder;
+  const tier = findTier(pb.planType, pb.tierId);
+  const normalTotal = planNormalTotal(pb);
+  const daysSnapshot = [];
+  pb.weeks.forEach((week,wIdx)=>{
+    week.forEach(day=>{
+      const meals = tier.slots.map(slotKey=>{
+        const slot = day.slots[slotKey];
+        if(!slot) return null;
+        const prod = PRODUCTS.find(x=>x.id===slot.productId);
+        return {slot:slotKey, label:SLOT_META[slotKey].label, em:prod.em, name:prod.name};
+      }).filter(Boolean);
+      daysSnapshot.push({label:(pb.planType==='mensual'?`Semana ${wIdx+1} · `:'')+day.label, meals});
+    });
+  });
+  const ud = userData();
+  ud.cart.push({
+    uid:'plan_'+Date.now()+Math.random().toString(36).slice(2,6),
+    kind:'plan', planType:pb.planType, tierId:pb.tierId,
+    name:tier.label, em: pb.planType==='mensual'?'📅':'🗓️',
+    price:tier.planPrice, normalPrice:normalTotal, qty:1,
+    days:daysSnapshot,
+  });
+  saveDB();
+  state.planBuilder = null;
+  renderNavs();
+  showToast(`${tier.label} agregado al carrito ✅`);
+  go('cart');
+}
+function addComboToCart(comboId){
+  if(!db.sessionId){ go('auth'); return; }
+  const combo = COMBOS.find(c=>c.id===comboId);
+  const ud = userData();
+  ud.cart.push({
+    uid:'combo_'+Date.now()+Math.random().toString(36).slice(2,6),
+    kind:'combo', comboId,
+    name:combo.name, em:combo.em,
+    items: combo.items.map(pid=>{ const p=PRODUCTS.find(x=>x.id===pid); return {productId:pid,name:p.name,em:p.em}; }),
+    price:combo.comboPrice, normalPrice:combo.normalPrice, qty:1,
+  });
+  saveDB();
+  renderNavs();
+  showToast(`${combo.name} agregado al carrito 🎁`);
+}
+
+function tierCardHTML(planType, tier){
+  const savings = tier.normalPrice - tier.planPrice;
+  return `<div class="card" style="padding:22px;margin-bottom:14px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;">
+      <div><h3 style="font-size:1.05rem;">${tier.label}</h3><p class="desc" style="margin-top:4px;">${tier.desc}</p></div>
+      <span class="eyebrow-pill" style="margin-bottom:0;">Precio especial por plan</span>
+    </div>
+    <div style="display:flex;align-items:baseline;gap:10px;margin-top:14px;flex-wrap:wrap;">
+      <span style="text-decoration:line-through;color:var(--ink-soft);font-size:.9rem;">$${fmt(tier.normalPrice)}</span>
+      <span style="font-size:1.5rem;font-weight:800;color:var(--mint-ink);">$${fmt(tier.planPrice)}</span>
+      <span class="mini-tag" style="position:static;background:var(--pink);color:#8a4c4c;">Ahorras $${fmt(savings)}</span>
+    </div>
+    <button class="btn btn-primary btn-block" style="margin-top:16px;" onclick="startPlanBuilder('${planType}','${tier.id}')">Elegir este plan</button>
+  </div>`;
+}
+
+function slotRowHTML(weekIdx, dayIdx, slotKey){
+  const meta = SLOT_META[slotKey];
+  const day = state.planBuilder.weeks[weekIdx][dayIdx];
+  const slot = day.slots[slotKey];
+  const options = PRODUCTS.filter(p=>p.cat===meta.cat);
+  if(!slot){
+    return `<div class="opt-row">
+      <div class="opt-info"><span class="opt-em">${meta.em}</span><div><div class="opt-name">${meta.label}</div><div class="opt-price">Sin asignar</div></div></div>
+      <select onchange="changePlanSlot(${weekIdx},${dayIdx},'${slotKey}',this.value)" style="border-radius:10px;border:2px solid var(--line);padding:6px 8px;font-size:.78rem;">
+        <option value="">Agregar…</option>
+        ${options.map(o=>`<option value="${o.id}">${o.name}</option>`).join('')}
+      </select>
+    </div>`;
+  }
+  const prod = PRODUCTS.find(x=>x.id===slot.productId);
+  const price = unitPrice(slot.productId, prod.price, slot.selections) + (slot.pairedDrink? DRINKS.find(d=>d.id===slot.pairedDrink).price:0);
+  return `<div class="opt-row">
+    <div class="opt-info"><span class="opt-em">${meta.em}</span>
+      <div><div class="opt-name">${meta.label}: ${prod.name}</div><div class="opt-price">$${fmt(price)} COP</div></div>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <button class="btn-sm btn-outline" style="padding:6px 10px;" onclick="personalizePlanSlot(${weekIdx},${dayIdx},'${slotKey}')">Personalizar</button>
+      <select onchange="changePlanSlot(${weekIdx},${dayIdx},'${slotKey}',this.value)" style="border-radius:10px;border:2px solid var(--line);padding:6px 8px;font-size:.78rem;">
+        <option value="">Quitar</option>
+        ${options.map(o=>`<option value="${o.id}" ${o.id===slot.productId?'selected':''}>${o.name}</option>`).join('')}
+      </select>
+    </div>
+  </div>`;
+}
+
+function renderPlanBuilder(){
+  const pb = state.planBuilder;
+  const tier = findTier(pb.planType, pb.tierId);
+  const isMonthly = pb.planType==='mensual';
+  const days = pb.weeks[pb.weekIdx];
+  const weekTabsHtml = isMonthly ? `<div class="tab-strip">${pb.weeks.map((w,i)=>`<button class="${pb.weekIdx===i?'active':''}" onclick="switchPlanWeek(${i})">Semana ${i+1}</button>`).join('')}</div>` : '';
+  const daysHtml = days.map((day,dIdx)=>`
+    <div class="card" style="padding:16px 18px;margin-bottom:12px;">
+      <h4 style="font-size:1rem;margin-bottom:8px;">${day.label}</h4>
+      ${tier.slots.map(slotKey=>slotRowHTML(pb.weekIdx,dIdx,slotKey)).join('')}
+    </div>
+  `).join('');
+  const normalTotal = planNormalTotal(pb);
+  const savings = Math.max(0, normalTotal - tier.planPrice);
+  document.getElementById('plansContent').innerHTML = `
+    <button class="btn btn-ghost" style="padding-left:0;" onclick="backToPlanTiers()">← Cambiar de plan</button>
+    <div class="sec-head"><h2>${tier.label}</h2><span class="muted">${tier.desc}</span></div>
+    ${weekTabsHtml}
+    ${daysHtml}
+    <div class="summary-box">
+      <div class="summary-line"><span>Precio normal estimado</span><span>$${fmt(normalTotal)}</span></div>
+      <div class="summary-line"><span>Precio especial por plan</span><span>$${fmt(tier.planPrice)}</span></div>
+      <div class="summary-line total"><span>Ahorras</span><span>$${fmt(savings)}</span></div>
+    </div>
+    <button class="btn btn-primary btn-block" style="margin-top:16px;" onclick="addPlanToCart()">Confirmar y agregar plan al carrito</button>
+  `;
+}
+
+function renderCombosTab(){
+  document.getElementById('plansContent').innerHTML = `
+    <div class="sec-head"><h2>Combos Fit</h2><span class="muted">Precios especiales por combo</span></div>
+    ${COMBOS.map(c=>{
+      const savings = c.normalPrice - c.comboPrice;
+      const items = c.items.map(pid=>PRODUCTS.find(p=>p.id===pid));
+      return `<div class="card" style="padding:22px;margin-bottom:14px;">
+        <h3 style="font-size:1.05rem;">${c.em} ${c.name}</h3>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+          ${items.map(p=>`<div style="display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--ink-soft);"><span>${p.em}</span>${p.name}</div>`).join('')}
+        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-top:14px;flex-wrap:wrap;">
+          <span style="text-decoration:line-through;color:var(--ink-soft);font-size:.9rem;">$${fmt(c.normalPrice)}</span>
+          <span style="font-size:1.4rem;font-weight:800;color:var(--mint-ink);">$${fmt(c.comboPrice)}</span>
+          <span class="mini-tag" style="position:static;background:var(--pink);color:#8a4c4c;">Ahorras $${fmt(savings)}</span>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top:16px;" onclick="addComboToCart('${c.id}')">Agregar combo al carrito</button>
+      </div>`;
+    }).join('')}
+  `;
+}
+
+function renderPlansView(){
+  document.getElementById('planTabStrip').querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.tab===state.planTab));
+  if(state.planTab==='combos'){ state.planBuilder=null; renderCombosTab(); return; }
+  const planType = state.planTab; // 'semanal' | 'mensual'
+  if(state.planBuilder && state.planBuilder.planType===planType){ renderPlanBuilder(); return; }
+  state.planBuilder = null;
+  document.getElementById('plansContent').innerHTML = `
+    <div class="sec-head"><h2>${planType==='semanal'?'Plan Semanal':'Plan Mensual'}</h2><span class="muted">Organiza tus comidas con anticipación y ahorra</span></div>
+    ${PLAN_TIERS[planType].map(t=>tierCardHTML(planType,t)).join('')}
   `;
 }
 
@@ -1389,25 +2249,81 @@ function renderPayment(){
     </div>
   `).join('');
   const box = document.getElementById('paySimBox');
-  const total = cartSubtotal()+deliveryFee();
+  const total = cartFinalTotal();
+  const sim = state.checkout.paySim;
+
   if(state.checkout.payment==='bancolombia'){
-    box.innerHTML = `<div class="pay-sim"><b>Simulación Bancolombia</b>
-      <div class="row"><span>Cuenta</span><span>•••• 4821</span></div>
-      <div class="row"><span>Monto</span><span>$${fmt(total)} COP</span></div>
-      <div class="row"><span>Estado</span><span>Listo para confirmar</span></div>
-      <p style="margin-top:8px;">Este es un flujo simulado — no se realizan transacciones reales.</p></div>`;
+    if(sim==='processing'){
+      box.innerHTML = `<div class="pay-sim" style="text-align:center;"><b>⏳ Procesando pago...</b><p style="margin-top:6px;">Simulando la conexión con Bancolombia.</p></div>`;
+    } else if(sim==='approved'){
+      box.innerHTML = `<div class="pay-sim" style="text-align:center;color:var(--mint-ink);"><b style="font-size:1.05rem;">✓ Pago aprobado</b><p style="margin-top:6px;color:var(--ink-soft);">Simulación académica por $${fmt(total)} COP con Bancolombia.</p></div>`;
+    } else {
+      box.innerHTML = `<div class="pay-sim">
+        <b>Pago simulado con Bancolombia</b>
+        <p style="margin:6px 0 12px;">Esta es una simulación académica. No ingreses información bancaria real.</p>
+        <div class="field"><label>Nombre</label><input id="bcName" placeholder="Nombre de prueba"></div>
+        <div class="field"><label>Número de tarjeta de prueba</label><input id="bcCard" placeholder="4111 1111 1111 1111" maxlength="19"></div>
+        <div class="field" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div><label style="display:block;font-size:.82rem;font-weight:800;color:var(--ink-soft);margin-bottom:6px;">Vencimiento de prueba</label><input id="bcExp" placeholder="MM/AA"></div>
+          <div><label style="display:block;font-size:.82rem;font-weight:800;color:var(--ink-soft);margin-bottom:6px;">CVV de prueba</label><input id="bcCvv" placeholder="123" maxlength="4"></div>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top:6px;" onclick="payContinueBancolombia()">Continuar</button>
+      </div>`;
+    }
   } else if(state.checkout.payment==='pse'){
-    box.innerHTML = `<div class="pay-sim"><b>Simulación PSE</b>
-      <div class="row"><span>Banco</span><span>Seleccionado</span></div>
-      <div class="row"><span>Monto</span><span>$${fmt(total)} COP</span></div>
-      <div class="row"><span>Estado</span><span>Listo para confirmar</span></div>
-      <p style="margin-top:8px;">Este es un flujo simulado — no se solicitan datos bancarios reales.</p></div>`;
+    if(sim==='processing'){
+      box.innerHTML = `<div class="pay-sim" style="text-align:center;"><b>⏳ Procesando pago...</b><p style="margin-top:6px;">Simulando la conexión con PSE.</p></div>`;
+    } else if(sim==='approved'){
+      box.innerHTML = `<div class="pay-sim" style="text-align:center;color:var(--mint-ink);"><b style="font-size:1.05rem;">✓ Pago aprobado</b><p style="margin-top:6px;color:var(--ink-soft);">Simulación académica por $${fmt(total)} COP con PSE.</p></div>`;
+    } else {
+      box.innerHTML = `<div class="pay-sim">
+        <b>Pago simulado con PSE</b>
+        <p style="margin:6px 0 12px;">Esta es una simulación académica. No ingreses contraseñas bancarias reales.</p>
+        <div class="field"><label>Tipo de persona</label>
+          <select id="pseType"><option>Persona natural</option><option>Persona jurídica</option></select>
+        </div>
+        <div class="field"><label>Tipo de documento</label>
+          <select id="pseDocType"><option>Cédula de ciudadanía</option><option>Cédula de extranjería</option><option>NIT</option></select>
+        </div>
+        <div class="field"><label>Número de documento</label><input id="pseDoc" placeholder="Documento de prueba"></div>
+        <div class="field"><label>Banco</label>
+          <select id="pseBank"><option>Banco Demo 1</option><option>Banco Demo 2</option><option>Banco Demo 3</option><option>Banco Ficticio Universitario</option></select>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top:6px;" onclick="payContinuePSE()">Continuar con PSE</button>
+      </div>`;
+    }
   } else if(state.checkout.payment==='efectivo'){
     box.innerHTML = `<div class="pay-sim"><b>Efectivo</b><p>Paga al recibir tu pedido. Ten listo el valor exacto de $${fmt(total)} COP si es posible.</p></div>`;
   } else { box.innerHTML=''; }
-  document.getElementById('toSummaryBtn').disabled = !state.checkout.payment;
+  document.getElementById('toSummaryBtn').disabled = !(state.checkout.payment && state.checkout.paySim==='approved');
 }
-function pickPayment(id){ state.checkout.payment=id; renderPayment(); }
+function pickPayment(id){
+  state.checkout.payment = id;
+  state.checkout.paySim = id==='efectivo' ? 'approved' : 'form';
+  renderPayment();
+}
+function runPaySimulation(){
+  state.checkout.paySim = 'processing';
+  renderPayment();
+  setTimeout(()=>{
+    if(state.view!=='payment') return;
+    state.checkout.paySim = 'approved';
+    renderPayment();
+  }, 1300);
+}
+function payContinueBancolombia(){
+  const name = document.getElementById('bcName').value.trim();
+  const card = document.getElementById('bcCard').value.trim();
+  const exp = document.getElementById('bcExp').value.trim();
+  const cvv = document.getElementById('bcCvv').value.trim();
+  if(!name || !card || !exp || !cvv){ showToast('Completa los datos de prueba de Bancolombia'); return; }
+  runPaySimulation();
+}
+function payContinuePSE(){
+  const doc = document.getElementById('pseDoc').value.trim();
+  if(!doc){ showToast('Ingresa un número de documento de prueba'); return; }
+  runPaySimulation();
+}
 
 /* =====================================================
    CHECKOUT: SUMMARY
@@ -1417,6 +2333,7 @@ function renderSummary(){
   const cart = ud.cart;
   const subtotal = cartSubtotal();
   const fee = deliveryFee();
+  const discount = couponDiscount();
   const pay = PAYMENTS.find(p=>p.id===state.checkout.payment);
   const itemsHtml = cart.map(item=>{
     const extras = itemExtraLines(item);
@@ -1433,8 +2350,9 @@ function renderSummary(){
       <div class="row"><span>Método de pago</span><b>${pay?pay.label:''}</b></div>
       <div class="row"><span>Tiempo estimado</span><b>15–25 minutos</b></div>
       <div class="row"><span>Subtotal</span><span>$${fmt(subtotal)}</span></div>
+      ${discount?`<div class="row"><span>Cupón (${ud.appliedCoupon})</span><span>-$${fmt(discount)}</span></div>`:''}
       <div class="row"><span>Entrega</span><span>${fee?'$'+fmt(fee):'Gratis'}</span></div>
-      <div class="row" style="border-top:1.5px dashed var(--line);margin-top:6px;padding-top:10px;"><b>TOTAL</b><b>$${fmt(subtotal+fee)} COP</b></div>
+      <div class="row" style="border-top:1.5px dashed var(--line);margin-top:6px;padding-top:10px;"><b>TOTAL</b><b>$${fmt(subtotal+fee-discount)} COP</b></div>
     </div>
   `;
 }
@@ -1444,23 +2362,34 @@ let trackTimer = null;
 function placeOrder(){
   const ud = userData();
   if(!ud.cart.length) return;
+  const discount = couponDiscount();
+  const finalTotal = cartFinalTotal();
   const order = {
     id: 'FC'+String(1000+ud.orders.length+1),
     date: new Date().toLocaleString('es-CO',{dateStyle:'medium',timeStyle:'short'}),
+    dateISO: new Date().toISOString(),
     items: ud.cart.map(i=>({...i})),
     location: state.checkout.location,
     locExtra: state.checkout.locExtra,
     deliveryTime: state.checkout.deliveryTime,
     payment: state.checkout.payment,
-    total: cartSubtotal()+deliveryFee(),
+    coupon: ud.appliedCoupon,
+    discount: discount,
+    total: finalTotal,
     status: 'Recibido',
     stage: 0,
+    ratedProducts: [],
   };
   ud.orders.unshift(order);
   ud.cart = [];
+  if(ud.appliedCoupon){ ud.usedCoupons.push(ud.appliedCoupon); ud.appliedCoupon = null; }
+  const earned = Math.round(finalTotal * POINTS_PER_COP);
+  ud.points = (ud.points||0) + earned;
+  pushNotification(ud, `🎉 Tu pedido #${order.id} fue recibido. Tiempo estimado: 15–25 minutos.`);
+  if(earned>0) pushNotification(ud, `⭐ Ganaste ${earned} FIT Puntos con tu compra.`);
   saveDB();
   currentOrder = order;
-  state.checkout = {location:null, locExtra:'', deliveryTime:null, deliveryTimeIsOther:false, usingProfileFloor:null, usingProfileRoom:'', payment:null};
+  state.checkout = {location:null, locExtra:'', deliveryTime:null, deliveryTimeIsOther:false, usingProfileFloor:null, usingProfileRoom:'', payment:null, paySim:null};
   go('confirmation');
   startTracking(order);
 }
@@ -1473,8 +2402,12 @@ function startTracking(order){
     order.stage++;
     const labels = ['Recibido','Preparando','En camino','Entregado'];
     order.status = labels[order.stage];
+    const ud = userData();
+    const stageMsgs = {1:'👩‍🍳 Tu pedido está en preparación.', 2:'🛵 Tu pedido está en camino.', 3:'✅ Tu pedido fue entregado.'};
+    if(ud && stageMsgs[order.stage]) pushNotification(ud, `Pedido #${order.id}: ${stageMsgs[order.stage]}`);
     saveDB();
     renderConfirmation(order);
+    if(state.view==='cart'||state.view==='orders'||state.view==='profile') renderNavs();
   }, 4000);
 }
 
@@ -1507,13 +2440,101 @@ function renderOrders(){
     document.getElementById('ordersContent').innerHTML = `<div class="empty-state"><span class="em">📦</span>Todavía no tienes pedidos.<br><br><button class="btn btn-primary" onclick="go('menu')">Hacer mi primer pedido</button></div>`;
     return;
   }
-  document.getElementById('ordersContent').innerHTML = orders.map(o=>`
-    <div class="order-hist-item">
+  document.getElementById('ordersContent').innerHTML = orders.map(o=>{
+    const rateButtons = (o.status==='Entregado') ? o.items.filter(i=>i.productId && !(o.ratedProducts||[]).includes(i.productId)).map(i=>
+      `<button class="btn-sm btn-outline" style="margin-top:8px;margin-right:6px;" onclick="openRatingModal('${o.id}','${i.productId}')">Calificar ${i.name}</button>`
+    ).join('') : '';
+    return `<div class="order-hist-item">
       <div class="top"><b>Pedido #${o.id}</b><span class="status-pill">${o.status}</span></div>
       <div class="desc2">${o.items.map(i=>i.qty+'× '+i.name).join(', ')}</div>
+      ${o.discount?`<div class="desc2">Cupón ${o.coupon}: -$${fmt(o.discount)} COP</div>`:''}
       <div class="bottom"><span>${o.date}</span><b>$${fmt(o.total)} COP</b></div>
+      ${rateButtons?`<div>${rateButtons}</div>`:''}
+    </div>`;
+  }).join('');
+}
+
+/* =====================================================
+   ADMIN PANEL (simulado — solo para la demo/presentación)
+===================================================== */
+const ADMIN_FILTERS = [
+  {id:'todos', label:'Todos'},
+  {id:'Recibido', label:'Pendientes'},
+  {id:'Preparando', label:'En preparación'},
+  {id:'En camino', label:'En camino'},
+  {id:'Entregado', label:'Entregados'},
+];
+function allOrdersFlat(){
+  const list = [];
+  db.users.forEach(u=>{
+    const ud = db.data[u.id];
+    if(!ud) return;
+    (ud.orders||[]).forEach(o=>list.push({...o, userId:u.id, customerName:u.name}));
+  });
+  return list.sort((a,b)=> (b.dateISO||'').localeCompare(a.dateISO||''));
+}
+function computeAdminStats(orders){
+  const todayStr = new Date().toISOString().slice(0,10);
+  const todays = orders.filter(o=>o.dateISO && o.dateISO.slice(0,10)===todayStr);
+  const ventasHoy = todays.reduce((s,o)=>s+o.total,0);
+  const tally = {};
+  orders.forEach(o=>o.items.forEach(i=>{ if(i.productId) tally[i.name]=(tally[i.name]||0)+i.qty; }));
+  const ranked = Object.entries(tally).sort((a,b)=>b[1]-a[1]);
+  let totalRating=0, countRating=0;
+  Object.values(db.reviews||{}).forEach(arr=>arr.forEach(r=>{totalRating+=r.rating;countRating++;}));
+  const avgRating = countRating? (totalRating/countRating).toFixed(1) : '—';
+  return {ventasHoy, pedidosHoy: todays.length, ranked, avgRating};
+}
+function renderAdmin(){
+  const orders = allOrdersFlat();
+  const stats = computeAdminStats(orders);
+  document.getElementById('adminStats').innerHTML = `
+    <div class="admin-stats-grid" style="margin-top:16px;">
+      <div class="admin-stat"><b>$${fmt(stats.ventasHoy)}</b><span>VENTAS DEL DÍA</span></div>
+      <div class="admin-stat"><b>${stats.pedidosHoy}</b><span>PEDIDOS HOY</span></div>
+      <div class="admin-stat"><b>${stats.ranked[0]?stats.ranked[0][0]:'—'}</b><span>MÁS VENDIDO</span></div>
+      <div class="admin-stat"><b>${stats.avgRating} ⭐</b><span>CALIF. PROMEDIO</span></div>
     </div>
+    <div class="card" style="padding:18px;margin-top:16px;">
+      <h4 style="font-size:.9rem;margin-bottom:12px;">Productos más vendidos (histórico)</h4>
+      ${stats.ranked.slice(0,5).map(([name,qty])=>{
+        const max = stats.ranked[0][1]||1;
+        return `<div class="admin-bar-row"><span style="width:120px;flex:none;">${name}</span>
+          <div class="admin-bar-track"><div class="admin-bar-fill" style="width:${(qty/max*100)}%;"></div></div>
+          <span style="width:26px;text-align:right;">${qty}</span></div>`;
+      }).join('') || '<p class="hint" style="text-align:left;">Aún no hay pedidos registrados.</p>'}
+    </div>
+  `;
+  document.getElementById('adminFilterStrip').innerHTML = ADMIN_FILTERS.map(f=>`
+    <button class="${state.adminFilter===f.id?'active':''}" onclick="setAdminFilter('${f.id}')">${f.label}</button>
   `).join('');
+  const filtered = state.adminFilter==='todos' ? orders : orders.filter(o=>o.status===state.adminFilter);
+  const nextStage = {0:'Preparando',1:'En camino',2:'Entregado'};
+  document.getElementById('adminOrders').innerHTML = filtered.length ? filtered.map(o=>`
+    <div class="admin-order-card">
+      <div class="top"><span>#${o.id}</span><span class="status-pill">${o.status}</span></div>
+      <div class="meta">
+        <b>Cliente:</b> ${o.customerName}<br>
+        <b>Productos:</b> ${o.items.map(i=>i.qty+'× '+i.name).join(', ')}<br>
+        <b>Hora:</b> ${o.date} · <b>Ubicación:</b> ${o.location||'—'}<br>
+        <b>Total:</b> $${fmt(o.total)} COP · <b>Pago:</b> ${PAYMENTS.find(p=>p.id===o.payment)?.label||'—'}
+      </div>
+      ${o.stage<3?`<div class="admin-status-btns"><button class="btn-sm btn-primary" onclick="adminAdvanceStatus('${o.userId}','${o.id}')">Avanzar a: ${nextStage[o.stage]}</button></div>`:''}
+    </div>
+  `).join('') : `<div class="empty-state"><span class="em">📭</span>No hay pedidos en esta categoría.</div>`;
+}
+function setAdminFilter(id){ state.adminFilter = id; renderAdmin(); }
+function adminAdvanceStatus(userId, orderId){
+  const ud = db.data[userId];
+  if(!ud) return;
+  const order = ud.orders.find(o=>o.id===orderId);
+  if(!order || order.stage>=3) return;
+  order.stage++;
+  order.status = ['Recibido','Preparando','En camino','Entregado'][order.stage];
+  const stageMsgs = {1:'👩‍🍳 Tu pedido está en preparación.', 2:'🛵 Tu pedido está en camino.', 3:'✅ Tu pedido fue entregado.'};
+  pushNotification(ud, `Pedido #${order.id}: ${stageMsgs[order.stage]}`);
+  saveDB();
+  renderAdmin();
 }
 
 /* =====================================================
@@ -1523,6 +2544,26 @@ function switchPTab(t){
   document.querySelectorAll('.ptab').forEach(b=>b.classList.toggle('active', b.dataset.t===t));
   document.querySelectorAll('.ptab-content').forEach(c=>c.style.display='none');
   document.getElementById('ptab-'+t).style.display='block';
+}
+
+/* ---------- Ajustes: modo oscuro y accesibilidad ---------- */
+function applySettings(){
+  const root = document.documentElement;
+  root.setAttribute('data-theme', db.settings.dark ? 'dark' : 'light');
+  root.classList.toggle('large-text', !!db.settings.largeText);
+  root.classList.toggle('high-contrast', !!db.settings.highContrast);
+  root.classList.toggle('reduce-motion', !!db.settings.reduceMotion);
+}
+function toggleSetting(key){
+  db.settings[key] = !db.settings[key];
+  saveDB();
+  applySettings();
+  renderProfile();
+}
+function redeemReward(points, label){
+  const ud = userData();
+  if(ud.points < points) return;
+  showToast(`🎉 Canjeaste: ${label} (demostrativo — se aplicará en tu próximo pedido)`);
 }
 
 function renderProfile(){
@@ -1550,6 +2591,16 @@ function renderProfile(){
     <div class="field"><label>Ubicación habitual</label>
       <select id="pfLoc">${LOCATIONS.map(l=>`<option ${u.location===l.id?'selected':''}>${l.id}</option>`).join('')}</select>
     </div>
+
+    <div class="card" style="padding:18px 20px;margin:6px 0 18px;">
+      <h4 style="font-size:.92rem;margin-bottom:4px;">Información corporal <span style="font-weight:600;color:var(--ink-soft);font-size:.72rem;">(opcional)</span></h4>
+      <p class="hint" style="text-align:left;margin:0 0 12px;">Es solo informativa. FIT CAMPUS no calcula peso ideal ni hace recomendaciones médicas con estos datos.</p>
+      <div class="field" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0;">
+        <div><label style="display:block;font-size:.82rem;font-weight:800;color:var(--ink-soft);margin-bottom:6px;">Altura (cm)</label><input id="pfHeight" type="number" min="0" placeholder="Ej. 170" value="${u.height||''}"></div>
+        <div><label style="display:block;font-size:.82rem;font-weight:800;color:var(--ink-soft);margin-bottom:6px;">Peso (kg)</label><input id="pfWeight" type="number" min="0" placeholder="Ej. 65" value="${u.weight||''}"></div>
+      </div>
+    </div>
+
     <button class="btn btn-primary" onclick="saveProfile()">Guardar cambios</button>
   `;
 
@@ -1583,6 +2634,47 @@ function renderProfile(){
       <div class="desc2">${o.items.map(i=>i.qty+'× '+i.name).join(', ')}</div>
       <div class="bottom"><span>${o.date} · ${PAYMENTS.find(p=>p.id===o.payment)?.label||''}</span><b>$${fmt(o.total)} COP</b></div>
     </div>`).join('') : `<div class="empty-state"><span class="em">📦</span>Aún no tienes pedidos.</div>`;
+
+  const nextReward = POINTS_REWARDS.find(r=>r.points>ud.points) || POINTS_REWARDS[POINTS_REWARDS.length-1];
+  const prevThreshold = POINTS_REWARDS.filter(r=>r.points<=ud.points).slice(-1)[0];
+  const base = prevThreshold ? prevThreshold.points : 0;
+  const pct = Math.min(100, Math.round(((ud.points-base)/(nextReward.points-base||1))*100));
+  document.getElementById('ptab-puntos').innerHTML = `
+    <div class="points-card">
+      <span style="font-weight:700;">⭐ Tus puntos</span>
+      <div class="big">${ud.points}</div>
+      <div class="progress-track"><div class="progress-fill" style="width:${ud.points>=nextReward.points?100:pct}%;"></div></div>
+      <p style="font-size:.82rem;margin-top:8px;">${ud.points>=nextReward.points ? `¡Ya puedes canjear "${nextReward.label}"!` : `Te faltan ${nextReward.points-ud.points} puntos para obtener ${nextReward.label.toLowerCase()}.`}</p>
+    </div>
+    <p class="hint" style="text-align:left;margin-top:12px;">Ganas 1 FIT Punto por cada $1.000 COP en compras confirmadas.</p>
+    ${POINTS_REWARDS.map(r=>`
+      <div class="reward-row ${ud.points<r.points?'locked':''}">
+        <span style="font-size:1.3rem;">${r.em}</span>
+        <div style="flex:1;"><b style="font-size:.88rem;">${r.label}</b><div class="opt-price">${r.points} puntos</div></div>
+        <button class="btn-sm ${ud.points>=r.points?'btn-primary':'btn-outline'}" ${ud.points<r.points?'disabled':''} onclick="redeemReward(${r.points},'${r.label}')">Canjear</button>
+      </div>
+    `).join('')}
+  `;
+
+  document.getElementById('ptab-ajustes').innerHTML = `
+    <h3 style="font-size:1.05rem;margin-bottom:12px;">Personalización</h3>
+    <div class="settings-row">
+      <div class="lab"><b>🌙 Modo oscuro</b><small>Mantiene los colores de FIT CAMPUS en tono oscuro</small></div>
+      <label class="switch"><input type="checkbox" ${db.settings.dark?'checked':''} onchange="toggleSetting('dark')"><span class="track"></span></label>
+    </div>
+    <div class="settings-row">
+      <div class="lab"><b>🔤 Aumentar tamaño de texto</b><small>Hace el texto de toda la app más grande</small></div>
+      <label class="switch"><input type="checkbox" ${db.settings.largeText?'checked':''} onchange="toggleSetting('largeText')"><span class="track"></span></label>
+    </div>
+    <div class="settings-row">
+      <div class="lab"><b>👁️ Mejorar contraste</b><small>Aumenta el contraste de textos y botones</small></div>
+      <label class="switch"><input type="checkbox" ${db.settings.highContrast?'checked':''} onchange="toggleSetting('highContrast')"><span class="track"></span></label>
+    </div>
+    <div class="settings-row">
+      <div class="lab"><b>♿ Reducir animaciones</b><small>Desactiva la elevación de tarjetas y otros movimientos</small></div>
+      <label class="switch"><input type="checkbox" ${db.settings.reduceMotion?'checked':''} onchange="toggleSetting('reduceMotion')"><span class="track"></span></label>
+    </div>
+  `;
 }
 
 function toggleRestriction(id){
@@ -1664,6 +2756,10 @@ function saveProfile(){
   u.email = document.getElementById('pfEmail').value.trim() || u.email;
   u.password = document.getElementById('pfPass').value || u.password;
   u.location = document.getElementById('pfLoc').value;
+  const heightVal = document.getElementById('pfHeight').value.trim();
+  const weightVal = document.getElementById('pfWeight').value.trim();
+  u.height = heightVal ? Number(heightVal) : null;
+  u.weight = weightVal ? Number(weightVal) : null;
   saveDB(); renderProfile();
   showToast('Datos actualizados ✅');
 }
@@ -1774,6 +2870,13 @@ function showToast(msg){
    INIT
 ===================================================== */
 document.getElementById('modalOverlay').addEventListener('click', e=>{ if(e.target.id==='modalOverlay') closeModal(); });
+document.getElementById('unitModalOverlay').addEventListener('click', e=>{ if(e.target.id==='unitModalOverlay') closeUnitEditor(); });
+document.addEventListener('click', e=>{
+  if(state.notifOpen && !e.target.closest('#notifDrawer') && !e.target.closest('[onclick="toggleNotifDrawer()"]')){
+    state.notifOpen = false; renderNotifDrawer();
+  }
+});
+applySettings();
 fillRegSelects();
 renderAll();
 </script>
